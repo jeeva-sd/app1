@@ -7,17 +7,19 @@ const Dashboard = () => {
     useEffect(() => {
         const checkTokenCookie = () => {
             const tokenCookie = document.cookie.split('; ').find(row => row.startsWith('token='));
+            console.log(tokenCookie, 'tokenCookie');
+            console.log(document.cookie, 'document.cookie')
             if (!tokenCookie) {
                 navigate('/');
             }
         };
 
         checkTokenCookie();
-    }, [navigate]);
+    }, []);
 
     const logout = async () => {
         try {
-            const response = await fetch('http://localhost:4000/logout', {
+            const response = await fetch('https://api.favinsta.com/logout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,6 +33,7 @@ const Dashboard = () => {
             else {
                 navigate('/');
             }
+
 
         } catch (error) {
             console.error('Error logging in:', error);
