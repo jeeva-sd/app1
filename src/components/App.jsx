@@ -69,14 +69,24 @@ function LoginPage() {
   if (loading) return <div className='flex w-[90vw] justify-center'>Loading...</div>;
 
   const checkCookie = async () => {
-    const response = await axios.post('https://api.favinsta.com/check-login', {
-      headers: {
-        Cookie: 'hello=true',
-        withCredentials: true
-      },
-    });
+    try {
+      // Set Axios defaults for sending cookies
+      axios.defaults.withCredentials = true;
 
-    console.log(response, 'response');
+      const response = await axios.post(
+        'https://api.favinsta.com/check-login',
+        {},
+        {
+          headers: {
+            Cookie: 'hello=true', // Your cookie data
+          },
+        }
+      );
+
+      console.log(response.data); // Assuming the response contains data
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
