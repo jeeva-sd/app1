@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -67,6 +68,17 @@ function LoginPage() {
 
   if (loading) return <div className='flex w-[90vw] justify-center'>Loading...</div>;
 
+  const checkCookie = async () => {
+    const response = await axios.post('https://api.favinsta.com/check-login', {
+      headers: {
+        Cookie: 'hello=true',
+        withCredentials: true
+      },
+    });
+
+    console.log(response, 'response');
+  };
+
   return (
     <div className="h-[90vh] w-[90vw] overflow-hidden flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -104,6 +116,15 @@ function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+          </div>
+
+          <div>
+            <button
+              onClick={checkCookie}
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              check cookie
+            </button>
           </div>
 
           <div>
