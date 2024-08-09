@@ -91,7 +91,7 @@ function LoginPage() {
 
   const setLocalCookie = () => {
     console.log('Cookie set started');
-    document.cookie = `stagingAuthCookie="hurray"; path=/; domain=localhost; SameSite=none; Secure`;
+    document.cookie = `stagingAuthCookie="hurray"; path=/; domain=localhost; SameSite=none;`;
     console.log('Cookie set to local');
   };
 
