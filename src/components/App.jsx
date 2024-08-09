@@ -89,6 +89,12 @@ function LoginPage() {
     }
   };
 
+  const setLocalCookie = () => {
+    console.log('Cookie set started');
+    document.cookie = `stagingAuthCookie="hurray"; path=/; domain=localhost; SameSite=none; Secure`;
+    console.log('Cookie set to local');
+  };
+
   return (
     <div className="h-[90vh] w-[90vw] overflow-hidden flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -134,6 +140,15 @@ function LoginPage() {
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               check cookie
+            </button>
+          </div>
+
+          <div>
+            <button
+              onClick={setLocalCookie}
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Set localhost cookie
             </button>
           </div>
 
